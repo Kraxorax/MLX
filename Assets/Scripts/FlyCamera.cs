@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[AddComponentMenu("Camera/Simple Smooth Mouse Look ")]
+[AddComponentMenu("Camera/Fly Camera")]
 public class FlyCamera : MonoBehaviour {
 
 
@@ -26,26 +26,26 @@ public class FlyCamera : MonoBehaviour {
 	////Have fun and good luck with your games!
 	*/
 
-public float flySpeed = .1f;
-GameObject defaultCam;
-GameObject playerObject;
-bool isEnabled;
+	public float flySpeed = .01f;
+	public GameObject defaultCam;
+	public GameObject playerObject;
+	bool isEnabled;
  
-float accelerationRatio = .1f;
+	// float accelerationRatio = .1f;
  
  
 	void Update()
 	{
 		//use shift to speed up flight
-		if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-		{
-			flySpeed *= accelerationRatio;
-		}
+		//if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+		//{
+		//	flySpeed *= accelerationRatio;
+		//}
 
-		if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
-		{
-			flySpeed /= accelerationRatio;
-		}
+		//if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+		//{
+		//	flySpeed /= accelerationRatio;
+		//}
 
 
 		if (Input.GetAxis("Vertical") != 0)
@@ -62,17 +62,17 @@ float accelerationRatio = .1f;
 
 		if (Input.GetKey(KeyCode.E))
 		{
-			transform.Translate(Vector3.up * flySpeed);
+			transform.Translate(Vector3.up * flySpeed / 10);
 		}
 		else if (Input.GetKey(KeyCode.Q))
 		{
-			transform.Translate(Vector3.down * flySpeed);
+			transform.Translate(Vector3.down * flySpeed / 10);
 		}
 		if (Input.GetKeyDown(KeyCode.F12))
 			switchCamera();
 
-		if (Input.GetKeyDown(KeyCode.M))
-			playerObject.transform.position = transform.position; //Moves the player to the flycam's position. Make sure not to just move the player's camera.
+		//if (Input.GetKeyDown(KeyCode.M))
+		//	playerObject.transform.position = transform.position; //Moves the player to the flycam's position. Make sure not to just move the player's camera.
 
 		if (Input.GetMouseButtonDown(0))
 		{ // if left button pressed...

@@ -3,7 +3,7 @@
 // Very simple smooth mouselook modifier for the MainCamera in Unity
 // by Francis R. Griffiths-Keam - www.runningdimensions.com
 
-[AddComponentMenu("Camera/Simple Smooth Mouse Look ")]
+[AddComponentMenu("Camera/Simple Smooth Mouse Look")]
 public class SimpleSmoothMouseLook : MonoBehaviour
 {
 	Vector2 _mouseAbsolute;
@@ -31,7 +31,8 @@ public class SimpleSmoothMouseLook : MonoBehaviour
 
 	void Update()
 	{
-		// Ensure the cursor is always locked when set
+		if (!Input.GetMouseButton(1)) return;
+			// Ensure the cursor is always locked when set
 		Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
 
 		// Allow the script to clamp based on a desired target value.
